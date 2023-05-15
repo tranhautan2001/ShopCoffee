@@ -1,0 +1,25 @@
+  .reservation, .page-header, .offer, .footer {
+    background: linear-gradient(rgba(51, 33, 29, 0.9), rgba(51, 33, 29, 0.9)), url(../../../assets/img/bg.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover
+  }
+  .text-white {
+    color: #fff !important
+  }
+  h1, h2, .font-weight-bold {
+    font-weight: 700 !important
+  }
+
+  h3, h4, .font-weight-medium {
+    font-weight: 500 !important
+  }
+
+  h5, h6, .font-weight-normal {
+    font-weight: 400 !important
+  }
+  a {
+    color: #DA9F5B;
+    text-decoration: none;
+    background-color: transparent;
+  }
