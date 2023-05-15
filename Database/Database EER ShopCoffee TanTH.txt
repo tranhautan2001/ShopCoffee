@@ -1,0 +1,58 @@
+drop database if exists Coffeeshop;
+create database Coffeeshop;
+use Coffeeshop;
+
+create table product(
+id_product int primary key auto_increment,
+name_product varchar(45) not null,
+describe_prodyct varchar(45) not null,
+price_product int,
+quantity_product int,
+img_product varchar(255),
+material_product varchar(45) not null,
+id_product_type int,
+id_suppliers int,
+foreign key(id_product_type) references product_type(id_product_type),
+foreign key(id_suppliers) references suppliers(id_suppliers)
+);
+
+create table product_type(
+id_product_type int primary key auto_increment,
+name_product_type varchar(45)
+);
+
+create table suppliers(
+id_suppliers int primary key auto_increment,
+name_suppliers varchar(45) not null,
+address_suppliers varchar(45) unique,
+email_suppliers varchar(45) unique,
+phonenumber_suppliers varchar(45) unique,
+products_supplied varchar(45) not null 
+);
+
+create table roles (
+	id_roles int primary key auto_increment,
+    name_roles varchar(45)
+);
+
+create table roles_employee (
+	id_roles int,
+    id_employee int,
+    foreign key (id_roles) references roles (id_roles),
+    foreign key (id_employee) references employee (id_employee)
+);		
+
+create table employee(
+	id_employee int primary key auto_increment,
+	name_user varchar(50),
+	`password` varchar(50),
+	id_roles int,
+	name_employee varchar(45) not null,
+	gender_employee bit,
+	date_of_birth_employee varchar(45) not null,
+	address_employee varchar(45) not null,
+	email_employee varchar(45) unique,
+	phone_number_employee varchar(45) unique,
+    id_product int,
+    foreign key(id_product) references product(id_product)
+);
