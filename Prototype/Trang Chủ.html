@@ -138,7 +138,11 @@
         -webkit-box-shadow: none;
         box-shadow: none;
     }
-
+    .btn-group-lg>.btn, .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: 0.3rem;
+    }
     .custom_nav-container .nav_search-btn {
         background-size: 22px;
         background-repeat: no-repeat;
@@ -158,7 +162,12 @@
         font-weight: 700;
         color: #ffffff;
     }
-
+    .reservation, .page-header, .offer, .footer {
+        background: linear-gradient(rgba(51, 33, 29, 0.9), rgba(51, 33, 29, 0.9)), url(img/bg.jpg);
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .custom_nav-container {
         z-index: 99999;
     }
@@ -233,6 +242,7 @@
         margin: 0 25px;
     }
 
+
 </style>
 
 <header>
@@ -256,14 +266,20 @@
                                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" routerLink="" role="tab" aria-controls="pills-home" aria-selected="true">Trang Chủ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" routerLink="/news/listNews" role="tab" aria-controls="pills-profile" aria-selected="false">Tin Tức</a>
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="Xem%20Chi%20Tiết.html" role="tab" aria-controls="pills-profile" aria-selected="false">Tin Tức</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill"   role="tab" aria-controls="pills-contact" aria-selected="false">Giới Thiệu</a>
                             </li>
-                            <li style="margin-left: 500px">
+                            <li class="nav-item">
+                                <a class="nav-link" href="Giỏ%20Hàng.html" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                                </svg></a>
+                            </li>
+                            <li class="nav-item" >
                                 <a class="nav-link" href="Đăng%20nhập.html" >Đăng nhập</a>
                             </li>
+
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
@@ -370,17 +386,18 @@
                 </div>
             </div>
             <div class="col-lg-6 mb-5">
-                <div class="row align-items-center">
-                    <div class="col-sm-5">
+                <div class="row align-items-center ">
+                    <a class="col-sm-5" href="Xem%20Chi%20Tiết.html">
                         <img class="img-fluid mb-3 mb-sm-0" src="img/service-2.jpg" alt="">
-                    </div>
+                    </a>
                     <div class="col-sm-7">
-                        <h4><i class="fa fa-coffee service-icon"></i>
+                        <h4><i  class="fa fa-coffee service-icon"></i>
                             Hạt cà phê tươi</h4>
                         <p class="m-0">Cafe tươi – hay cách gọi khác là cafe rang xay – là loại cafe được tạo nên bởi hạt cafe nguyên chất, không kèm theo bất kỳ chất phụ gia nào khác. Trước đây, cafe tươi chỉ xuất hiện ở những vùng chuyên trồng cafe hoặc được mua theo sở thích của một vài người yêu vị cafe tự nhiên.</p>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-6 mb-5">
                 <div class="row align-items-center">
                     <div class="col-sm-5">
@@ -406,6 +423,7 @@
         </div>
     </div>
 </div>
+
 <div class="container-fluid pt-5">
     <div class="container">
         <div class="section-title">
