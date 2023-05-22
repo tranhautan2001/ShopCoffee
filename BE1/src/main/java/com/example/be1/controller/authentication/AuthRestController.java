@@ -1,9 +1,18 @@
 package com.example.be1.controller.authentication;
 
 
+import com.example.be1.Model.Roles;
 import com.example.be1.Model.User;
 import com.example.be1.Security.JwtTokenProvider;
 import com.example.be1.Security.UserPrinciple;
+import com.example.be1.dto.request.ChangePasswordRequest;
+import com.example.be1.dto.request.RegisterForm;
+import com.example.be1.dto.request.ResetPasswordRequest;
+import com.example.be1.dto.request.SignInForm;
+import com.example.be1.dto.response.JwtResponse;
+import com.example.be1.dto.response.ResponseMessage;
+import com.example.be1.dto.user.UserMailDTO;
+import com.example.be1.dto.user.UserOtpDTO;
 import com.example.be1.service.mail.IEmailService;
 import com.example.be1.service.user.IRoleService;
 import com.example.be1.service.user.IUserService;
@@ -81,24 +90,24 @@ public class AuthRestController {
 
         User user = new User();
         user.setName(registerForm.getName());
-        user.setUsername(registerForm.getUsername());
+        user.setUserName(registerForm.getUsername());
         user.setEmail(registerForm.getEmail());
         user.setGender(registerForm.isGender());
         user.setAddress(registerForm.getAddress());
         user.setDateOfBirth(registerForm.getDateOfBirth());
         user.setPhoneNumber(registerForm.getPhoneNumber());
         user.setPassword(passwordEncoder.encode(registerForm.getPassword()));
-        Set<Role> roles = new HashSet<>();
+        Set<Role> role = new HashSet<>();
         Role userRole = roleService.findByName("ROLE_USER").get();
-        roles.add(userRole);
-        user.setRoles(roles);
+        role.add(userRole);
+        /*user.setRoles(Roles);*/
         userService.save(user);
         return new ResponseEntity<>("Đăng ký thành công!.", HttpStatus.CREATED);
     }
 
     @PutMapping("/change-password")
     public ResponseEntity<?> changePassword(HttpServletRequest request, @Validated @RequestBody
-    ChangePasswordRequest changePasswordRequest, BindingResult bindingResult) {
+            ChangePasswordRequest changePasswordRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             Map<String, String> map = new LinkedHashMap<>();
             List<FieldError> err = bindingResult.getFieldErrors();

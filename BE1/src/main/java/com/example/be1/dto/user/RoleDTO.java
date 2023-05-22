@@ -1,6 +1,8 @@
 package com.example.be1.dto.user;
 
-import com.example.api.entity.user.RoleName;
+
+
+import com.example.be1.Model.RoleName;
 
 import java.util.HashSet;
 import java.util.Set;

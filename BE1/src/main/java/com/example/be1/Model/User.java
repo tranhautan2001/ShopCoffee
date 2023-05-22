@@ -3,33 +3,44 @@ package com.example.be1.Model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "user",uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "user_name"
+        }),
+        @UniqueConstraint(columnNames = {
+                "email"
+        })
+})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String username;
-    private String password;
     private String name;
-    private Boolean gender;
-    private String email;
+    private boolean gender;
+    @Column(name = "date_of_birth")
     private String dateOfBirth;
-    private String phone;
-    @Column(columnDefinition = "longtext")
     private String address;
-    @Column(columnDefinition = "longtext")
-
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Roles> roles;
-
-    @OneToMany(mappedBy = "user")
+    private String email;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "user_name", nullable = false)
+    private String userName;
+    @Column(nullable = false)
+    private String password;
+    private LocalDateTime expiryTime;
+    private String otpSecret;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<Cart> carts;
-
+    @JoinTable(name = "roles_user",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
+    Set<Roles> roles = new HashSet<>();
     public User() {
     }
 
@@ -41,22 +52,6 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getName() {
         return name;
     }
@@ -65,20 +60,12 @@ public class User {
         this.name = name;
     }
 
-    public Boolean getGender() {
+    public boolean isGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getDateOfBirth() {
@@ -89,14 +76,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -105,11 +84,59 @@ public class User {
         this.address = address;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Set<Roles> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Roles> roles) {
         this.roles = roles;
+    }
+
+    public LocalDateTime getExpiryTime() {
+        return expiryTime;
+    }
+
+    public void setExpiryTime(LocalDateTime expiryTime) {
+        this.expiryTime = expiryTime;
+    }
+
+    public String getOtpSecret() {
+        return otpSecret;
+    }
+
+    public void setOtpSecret(String otpSecret) {
+        this.otpSecret = otpSecret;
     }
 }
