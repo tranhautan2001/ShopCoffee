@@ -2,13 +2,15 @@ import {Roles} from "./roles";
 
 export interface User {
   id?: number,
-  username?: string,
-  password?: string,
   name?: string,
   gender?: boolean,
   email?: string,
-  dateOfBirth?: string,
-  phone?: string,
+  date_of_birth?: string,
+  phone_number?: string,
   address?: string,
+  username?: string,
+  password?: string,
+  expiryTime?: string,
+  otpSecret?: string,
   roles?: Roles
 }

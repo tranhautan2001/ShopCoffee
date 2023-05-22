@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { BodyComponent } from './component/body/body.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { ModelComponent } from './component/model/model.component';
 import { CartDetailComponent } from './component/cart-detail/cart-detail.component';
-import { CatComponent } from './component/cat/cat.component';
 import { CartComponent } from './component/cart/cart.component';
 import { ProductComponent } from './component/product/product.component';
 import { ProductTypeComponent } from './component/product-type/product-type.component';
 import { SupplierComponent } from './component/supplier/supplier.component';
 import { CartStatusComponent } from './component/cart-status/cart-status.component';
+import { LoginComponent } from './component/login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -21,19 +23,21 @@ import { CartStatusComponent } from './component/cart-status/cart-status.compone
     HeaderComponent,
     BodyComponent,
     FooterComponent,
-    ModelComponent,
     CartDetailComponent,
-    CatComponent,
     CartComponent,
     ProductComponent,
     ProductTypeComponent,
     SupplierComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+      HttpClientModule,
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
