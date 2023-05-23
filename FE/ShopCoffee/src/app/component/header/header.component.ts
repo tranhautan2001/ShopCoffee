@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {TokenStorageService} from "../service/token-storage.service";
+import {  TokenStorageService} from "../service/token-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import {TokenStorageService} from "../service/token-storage.service";
 export class HeaderComponent implements OnInit {
   isLogin: boolean = false;
 
-  constructor(private tokenStorageService: TokenStorageService) {
+  constructor(private tokenStorageService: TokenStorageService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
@@ -23,5 +25,16 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.tokenStorageService.signOut();
     this.isLogin = false;
+  }
+
+  cart() {
+    let obj: any = this.tokenStorageService.getUser();
+    if (this.isLogin && obj.roles[0].authority == 'ROLE_USER') {
+      this.router.navigateByUrl('cart');
+    } else if (this.isLogin && obj.roles[0].authority == 'ROLE_ADMIN') {
+      console.log(this.isLogin && obj.roles[0].authority)
+
+      this.router.navigateByUrl('cart-management');
+    }
   }
 }

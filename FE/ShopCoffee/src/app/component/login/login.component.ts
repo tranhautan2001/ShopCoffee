@@ -6,6 +6,7 @@ import {ShareService} from "../service/share.service";
 import {Router} from "@angular/router";
 import {LogIn} from "../model/log-in";
 import {TokenStorageService} from "../service/token-storage.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,14 @@ export class LoginComponent implements OnInit {
     this.loginService.login(login).subscribe(next=>{
       console.log(next.token);
       this.tokenStorageService.saveTokenLocal(next.token);
-      alert("Đăng nhập thành công")
+      this.tokenStorageService.saveUserLocal(next);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Đăng nhập thành công',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
       this.router.navigateByUrl("")
     })

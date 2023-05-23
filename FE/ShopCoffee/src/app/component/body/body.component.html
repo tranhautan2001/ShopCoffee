@@ -69,6 +69,98 @@
     </div>
   </div>
 </div>
+
+
+<div class="container col-md-12 d-flex mt-5" style="border-bottom: #efbe29 5px solid">
+  <div class=" col-md-12">
+    <h1 style ="margin-left: 50px">DANH SÁCH THỰC ĐƠN</h1>
+  </div>
+</div>
+<nav class="navbar">
+  <div class=" container-fluid">
+    <div class="navbar-brand">
+    </div>
+
+    <div class="navbar-brand d-flex" style="margin-right: 70px ">
+      <input #name (change)="search(name.value)" class="form-control me-2"  type="search" placeholder="Tìm kiếm tên thực đơn"
+             aria-label="Search">
+      <button (click)="search(name.value)" class="btn btn-outline-success" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="section-title">
+    <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">THỰC ĐƠN & GIÁ</h4>
+  </div>
+  <div class="wrapper" >
+    <ul class="products">
+      <li *ngFor="let product of productList">
+        <div class="product-item">
+          <div class="product-top">
+            <a href="" class="product-thumb">
+              <img [src]="product.img" style="border: #f5c833 solid">
+              <a class="buy-now" data-toggle="modal" routerLink="cart/detail" data-target="#detail">Mua ngay</a>
+
+            </a>
+          </div>
+        </div>
+        <div class="product-info">
+          <a href="" class="product-cart"></a>
+          <a href="" class="product-name">{{product.name | titlecase | slice: 0 :20 }}<span
+            style="background-color: lightgray;color: #007bff;font-weight: 600"
+            *ngIf="product.name.length > 20">.....</span></a>
+          <div class="product-price">{{product.price.toLocaleString(
+            "vi-VN",
+            { style: "currency", currency: "VND" }
+          )}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="container col-md-12 d-flex mt-5" style="border-bottom: #efbe29 5px solid">
+  <div class=" col-md-12">
+    <h1 style ="margin-left: 50px">ĐƯỢC MUA NHIỀU NHẤT</h1>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="section-title">
+    <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">THỰC ĐƠN & GIÁ</h4>
+  </div>
+  <div class="wrapper" >
+    <ul class="products">
+      <li *ngFor="let product of productList">
+        <div class="product-item">
+          <div class="product-top">
+            <a href="" class="product-thumb" >
+              <img [src]="product.img" style="border: #f5c833 solid">
+              <a class="buy-now" data-toggle="modal"  routerLink="cart/detail" data-target="#detail">Mua ngay</a>
+
+            </a>
+          </div>
+        </div>
+        <div class="product-info">
+          <a href="" class="product-cart"></a>
+          <a href="" class="product-name">{{product.name | titlecase | slice: 0 :20 }}<span
+            style="background-color: lightgray;color: #007bff;font-weight: 600"
+            *ngIf="product.name.length > 20">.....</span></a>
+          <div class="product-price">{{product.price.toLocaleString(
+            "vi-VN",
+            { style: "currency", currency: "VND" }
+          )}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
 <div class="container-fluid pt-5">
   <div class="container">
     <div class="section-title">
@@ -120,84 +212,6 @@
           <div class="col-sm-7">
             <h4><i class="fa fa-table service-icon"></i>Đặt bàn trực tuyến</h4>
             <p class="m-0">Trong thời kì công nghệ thông tin bùng nổ như hiện nay, khái niệm đặt bàn trực tuyến Booking Online đã không còn quá xa lạ đối với nhiều người, tuy nhiên vào những ngày nghỉ lễ, cuối tuần, lượng khách đến ăn uống tại các nhà hàng, đặc biệt ở các thành phố lớn luôn tăng cao đột biến, thậm chí tình trạng không còn bàn trống diễn ra thường xuyên.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid pt-5">
-  <div class="container">
-    <div class="section-title">
-      <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">THỰC ĐƠN & GIÁ</h4>
-      <h1 class="display-4">Giá cả cạnh tranh
-      </h1>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <h1 class="mb-5">Hot Coffee</h1>
-        <div class="row align-items-center mb-5">
-          <div class="col-4 col-sm-3">
-            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="../../../assets/img/menu-1.jpg" alt="">
-            <h5 class="menu-price">$15.000.000 đ</h5>
-          </div>
-          <div class="col-8 col-sm-9">
-            <h4>Black Coffee</h4>
-            <p class="m-0">Cà phê đen chỉ đơn giản là cà phê được ủ bình thường mà không thêm các chất phụ gia như đường, sữa, kem hoặc thêm hương vị. Mặc dù nó có vị hơi đắng so với khi được thêm hương vị bằng các chất phụ gia, nhưng nhiều người lại yêu thích một tách cà phê đen đậm đà. Trên thực tế, đối với một số người, nó là một phần trong chế độ ăn uống hàng ngày của họ.</p>
-          </div>
-        </div>
-        <div class="row align-items-center mb-5">
-          <div class="col-4 col-sm-3">
-            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="../../../assets/img/menu-2.jpg" alt="">
-            <h5 class="menu-price">$17.000.000 đ</h5>
-          </div>
-          <div class="col-8 col-sm-9">
-            <h4>Chocolete Coffee</h4>
-            <p class="m-0">Trong một cái chảo lớn, nặng, đánh đường, ca cao và nước cho đến khi mịn. Nấu và đánh kem trên lửa vừa-thấp cho đến khi hỗn hợp tạo thành các đỉnh mềm khi nhấc que đánh trứng lên và giống như nước sốt kẹo mềm đặc, khoảng 35 phút. Loại bỏ nhiệt; khuấy trong vani và muối. Chuyển sang một cái bát; làm lạnh ít nhất 2 giờ.</p>
-          </div>
-        </div>
-        <div class="row align-items-center mb-5">
-          <div class="col-4 col-sm-3">
-            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="../../../assets/img/menu-3.jpg" alt="">
-            <h5 class="menu-price">$19.000.000 đ</h5>
-          </div>
-          <div class="col-8 col-sm-9">
-            <h4>Coffee With Milk</h4>
-            <p class="m-0">Cho sữa vào cốc trong lò vi sóng vài giây trước khi cho cà phê vào! Có một cây đũa hơi trên máy của bạn và thích một loại cà phê sữa cổ điển, như latte hoặc cappuccino? Lý tưởng nhất là bạn muốn sữa ở nhiệt độ trong khoảng 60-70°C (140-160°F) - đây là nhiệt độ tối ưu để mang lại vị ngọt tự nhiên của sữa.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <h1 class="mb-5">Cold Coffee</h1>
-        <div class="row align-items-center mb-5">
-          <div class="col-4 col-sm-3">
-            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="../../../assets/img/menu-1.jpg" alt="">
-            <h5 class="menu-price">15.000.000 đ</h5>
-          </div>
-          <div class="col-8 col-sm-9">
-            <h4>Black Coffee</h4>
-            <p class="m-0">Cà phê đen chỉ đơn giản là cà phê được ủ bình thường mà không thêm các chất phụ gia như đường, sữa, kem hoặc thêm hương vị. Mặc dù nó có vị hơi đắng so với khi được thêm hương vị bằng các chất phụ gia, nhưng nhiều người lại yêu thích một tách cà phê đen đậm đà. Trên thực tế, đối với một số người, nó là một phần trong chế độ ăn uống hàng ngày của họ.</p>
-          </div>
-        </div>
-        <div class="row align-items-center mb-5">
-          <div class="col-4 col-sm-3">
-            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="../../../assets/img/menu-2.jpg" alt="">
-            <h5 class="menu-price">$17.000.000 đ</h5>
-          </div>
-          <div class="col-8 col-sm-9">
-            <h4>Chocolete Coffee</h4>
-            <p class="m-0">Trong một cái chảo lớn, nặng, đánh đường, ca cao và nước cho đến khi mịn. Nấu và đánh kem trên lửa vừa-thấp cho đến khi hỗn hợp tạo thành các đỉnh mềm khi nhấc que đánh trứng lên và giống như nước sốt kẹo mềm đặc, khoảng 35 phút. Loại bỏ nhiệt; khuấy trong vani và muối. Chuyển sang một cái bát; làm lạnh ít nhất 2 giờ.</p>
-          </div>
-        </div>
-        <div class="row align-items-center mb-5">
-          <div class="col-4 col-sm-3">
-            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="../../../assets/img/menu-3.jpg" alt="">
-            <h5 class="menu-price">$19.000.000 đ</h5>
-          </div>
-          <div class="col-8 col-sm-9">
-            <h4>Coffee With Milk</h4>
-            <p class="m-0">Cho sữa vào cốc trong lò vi sóng vài giây trước khi cho cà phê vào! Có một cây đũa hơi trên máy của bạn và thích một loại cà phê sữa cổ điển, như latte hoặc cappuccino? Lý tưởng nhất là bạn muốn sữa ở nhiệt độ trong khoảng 60-70°C (140-160°F) - đây là nhiệt độ tối ưu để mang lại vị ngọt tự nhiên của sữa.</p>
           </div>
         </div>
       </div>
