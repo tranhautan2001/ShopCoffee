@@ -34,8 +34,8 @@ public class User {
     private String password;
     private LocalDateTime expiryTime;
     private String otpSecret;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonBackReference
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "roles_user",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}

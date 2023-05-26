@@ -11,7 +11,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    private Integer name;
+    private String name;
     private Integer code;
     private String oderDate;
     private String nameCustomer;
@@ -35,11 +35,11 @@ public class Cart {
         this.id = id;
     }
 
-    public Integer getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Integer name) {
+    public void setName(String name) {
         this.name = name;
     }
 

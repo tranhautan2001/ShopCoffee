@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
     } else if (this.isLogin && obj.roles[0].authority == 'ROLE_ADMIN') {
       console.log(this.isLogin && obj.roles[0].authority)
 
-      this.router.navigateByUrl('cart-management');
+      this.router.navigateByUrl('cart');
     }
   }
 }

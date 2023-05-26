@@ -15,7 +15,7 @@ import { CartStatusComponent } from './component/cart-status/cart-status.compone
 import { LoginComponent } from './component/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { CartManagementComponent } from './cart-management/cart-management.component';
+import { CartManagementComponent } from './component/cart-management/cart-management.component';
 
 
 @NgModule({

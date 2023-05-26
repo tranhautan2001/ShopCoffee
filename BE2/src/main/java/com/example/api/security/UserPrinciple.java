@@ -14,6 +14,7 @@ public class UserPrinciple implements UserDetails {
     private Integer id;
     private String name;
     private String username;
+    private Integer userid;
     private String email;
     @JsonIgnore
     private String password;

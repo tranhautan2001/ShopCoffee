@@ -5,9 +5,11 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 
 public class JwtResponse {
+
     String token;
     private String type = "Bearer";
     private String userName;
+    private Integer userId;
     private String name;
     private Collection<? extends GrantedAuthority> roles;
 
@@ -25,11 +27,22 @@ public class JwtResponse {
         this.token = token;
     }
 
-    public JwtResponse(String token, String username, Collection<? extends GrantedAuthority> authorities, String name) {
+
+    public JwtResponse(String token, String username, Collection<? extends GrantedAuthority> authorities, String name,Integer userId) {
         this.token = token;
         this.userName = username;
         this.roles = authorities;
         this.name = name;
+        this.userId = userId;
+
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getName() {

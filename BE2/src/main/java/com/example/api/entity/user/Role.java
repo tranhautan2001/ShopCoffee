@@ -1,5 +1,6 @@
 package com.example.api.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.NaturalId;
 
@@ -17,8 +18,8 @@ public class Role {
     @NaturalId
     @Column(length = 60)
     private RoleName name;
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
-    @JsonManagedReference
     Set<User> employeeSet = new HashSet<>();
 
     public Role() {

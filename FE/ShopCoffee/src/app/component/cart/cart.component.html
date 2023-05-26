@@ -1,107 +1,110 @@
-<section _ngcontent-fbc-c43="">
-  <div _ngcontent-fbc-c43="" class="container-fluid py-5 h-100">
-    <div _ngcontent-fbc-c43="" class="row d-flex justify-content-center align-items-center h-100">
-      <div _ngcontent-fbc-c43="" class="col-12">
-        <div _ngcontent-fbc-c43="" class="card card-registration card-registration-2"
-             style="border-radius: 15px;">
-          <div _ngcontent-fbc-c43="" class="card-body p-0">
-            <div _ngcontent-fbc-c43="" class="row g-0">
-              <div _ngcontent-fbc-c43="" class="col-lg-8">
-                <div _ngcontent-fbc-c43="" class="p-5">
-                  <div _ngcontent-fbc-c43=""
-                       class="d-flex justify-content-between align-items-center mb-5"><h1
-                    _ngcontent-fbc-c43="" class="fw-bold mb-0 text-black">Giỏ hàng của bạn</h1>
-                    <h6 _ngcontent-fbc-c43="" class="mb-0 text-muted">2 sản phẩm</h6></div>
-                  <hr _ngcontent-fbc-c43="" class="my-4">
-                  <div _ngcontent-fbc-c43="" class="ng-star-inserted">
-                    <div _ngcontent-fbc-c43=""
-                         class="row mb-4 d-flex justify-content-between align-items-center">
-                      <div _ngcontent-fbc-c43="" class="col-md-1 col-lg-1 col-xl-1" tabindex="0">
-                        <img _ngcontent-fbc-c43="" width="50" height="50" alt=""
-                             class="rounded-3"
-                             src="../../../assets/img/menu-1.jpg">
-                      </div>
-                      <div _ngcontent-fbc-c43="" class="col-md-4 col-lg-4 col-xl-4" tabindex="0">
-                        <h6 _ngcontent-fbc-c43="" class="text-black mb-0">Black Coffee</h6>
-                        <p _ngcontent-fbc-c43="" class="text-danger">14,800 VNĐ</p>
-                        </div>
-                      <!--  <div _ngcontent-fbc-c43="" class="col-md-2 col-lg-2 col-xl-1 d-flex">
-                            <div _ngcontent-fbc-c43="" id="buy-amount">
-                                <button _ngcontent-fbc-c43=""><i _ngcontent-fbc-c43=""
-                                                                 class="fas fa-minus text-primary"></i>
-                                </button>
-                                <input _ngcontent-fbc-c43="" id="amount" type="text">
-                                <button _ngcontent-fbc-c43=""><i _ngcontent-fbc-c43=""
-                                                                 class="fas fa-plus text-primary"></i>
-                                </button>
-                            </div>
-                        </div>-->
-                      <div _ngcontent-fbc-c43=""
-                           class="col-md-4 col-lg-3 col-xl-3 offset-lg-1 text-right"
-                           style="width: 150px;"><p _ngcontent-fbc-c43=""
-                                                    class="mb-0 text-danger">14,800 VNĐ</p></div>
-                      <div _ngcontent-fbc-c43="" class="col-md-1 col-lg-1 col-xl-1 text-end"><a
-                        _ngcontent-fbc-c43="" class="text-muted"><i _ngcontent-fbc-c43=""
-                                                                    class="fas fa-times"></i></a>
-                      </div>
-                    </div>
-                    <hr _ngcontent-fbc-c43="" class="my-4">
+<section>
+  <div class="container-fluid py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Giỏ hàng của bạn</h1>
+                    <h6 class="mb-0 text-muted">{{cartDetail.length}} sản phẩm</h6>
                   </div>
-                  <div _ngcontent-fbc-c43="" class="ng-star-inserted">
-                    <div _ngcontent-fbc-c43=""
-                         class="row mb-4 d-flex justify-content-between align-items-center">
-                      <div _ngcontent-fbc-c43="" class="col-md-1 col-lg-1 col-xl-1" tabindex="0">
-                        <img _ngcontent-fbc-c43="" width="50" height="50" alt=""
-                             class="rounded-3"
-                             src="../../../assets/img/menu-2.jpg">
+                  <hr class="my-4">
+                  <div *ngFor="let cart of cartDetail">
+                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                      <div class="col-md-1 col-lg-1 col-xl-1" [routerLink]="['/detail', cart.id]">
+                        <img
+                          src="{{cart.product.img}}"
+                          class=" rounded-3" width="100" height="100" alt="">
+                      </div>
+                      <div class="col-md-4 col-lg-4 col-xl-4" [routerLink]="['/detail', cart.id]">
+                        <h6 class="text-black mb-0">{{cart.product.name}}</h6>
+                        <p class="text-danger">{{cart.product.price| number:'1.0-0'}} VNĐ</p>
                       </div>
 
-                      <div _ngcontent-fbc-c43="" class="col-md-4 col-lg-4 col-xl-4" tabindex="0">
-                        <h6 _ngcontent-fbc-c43="" class="text-black mb-0">Chocolete Coffee</h6>
-                        <p _ngcontent-fbc-c43="" class="text-danger">25,600 VNĐ</p>
+                     <!-- <div class="col-md-2 col-lg-2 col-xl-1 d-flex">
+                        <div id="buy-amount">
+                          <button (click)="increaseQuantity(cart.id, -1, cart.name)"><i class="fas fa-minus text-primary"></i>
+                          </button>
+                          <input (focusout)="updateQuantity(cart.id, +input.value, cart.name)" #input id="amount" type="text"
+                                 [value]="cart.quantity">
+                          <button (click)="increaseQuantity(cart.id, 1, cart.name)"><i class="fas fa-plus text-primary"></i>
+                          </button>
+                        </div>
+                      </div>-->
+                     <!-- <div class="col-md-4 col-lg-3 col-xl-3 offset-lg-1 text-right" style="width: 150px">
+                        <p class="mb-0 text-danger">{{cart.total | number:'1.0-0'}} VNĐ</p>
+                      </div>-->
+                    <!--  <div class="col-md-1 col-lg-1 col-xl-1 text-end" (click)="deletePurchaseDetail(cart.id, cart.name)">
+                        <a class="text-muted"><i class="fas fa-times"></i></a>
+                      </div>-->
+                    </div>
+                    <hr class="my-4">
+                  </div>
+
+
+                  <!-- cart rỗng-->
+               <!--   <div *ngIf="cartList.length == 0" class="container-fluid">
+                    <div class="row">
+
+                      <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-body cart">
+                            <div class="col-sm-12 empty-cart-cls text-center">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/electronic-project-b2039.appspot.com/o/photo_2023-04-06_15-04-17-removebg-preview.png?alt=media&token=e0b6026a-e594-42d4-a1b5-6d04cc28c869" width="300" height="300" class="img-fluid mb-4 mr-3">
+                              <h3></h3>
+                              <a routerLink="/product" class="btn btn-primary cart-btn-transform m-3" data-abc="true">Về trang sản phẩm</a>
+
+
+                            </div>
+                          </div>
                         </div>
 
-                      <div _ngcontent-fbc-c43=""
-                           class="col-md-4 col-lg-3 col-xl-3 offset-lg-1 text-right"
-                           style="width: 150px;"><p _ngcontent-fbc-c43=""
-                                                    class="mb-0 text-danger">25,600 VNĐ</p></div>
-                      <div _ngcontent-fbc-c43="" class="col-md-1 col-lg-1 col-xl-1 text-end"><a
-                        _ngcontent-fbc-c43="" class="text-muted"><i _ngcontent-fbc-c43=""
-                                                                    class="fas fa-times"></i></a>
+
                       </div>
+
                     </div>
-                    <hr _ngcontent-fbc-c43="" class="my-4">
-                  </div><!----><!---->
-                  <div _ngcontent-fbc-c43="" class="pt-5"><h6 _ngcontent-fbc-c43="" class="mb-0"><a
-                    _ngcontent-fbc-c43="" routerlink="/product" class="text-body"
-                    href=""><i _ngcontent-fbc-c43=""
-                                               class="fas fa-long-arrow-alt-left me-2"></i> Quay lại
-                    trang sản phẩm</a></h6></div>
+
+                  </div>-->
+                  <!--cart rỗng-->
+
+
+                  <div class="pt-5">
+                    <h6 class="mb-0"><a routerLink="" class="text-body"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i> Quay lại trang sản phẩm</a></h6>
+                  </div>
                 </div>
               </div>
-              <div _ngcontent-fbc-c43="" class="col-lg-4 bg-grey">
-                <div _ngcontent-fbc-c43="" class="p-3"><h3 _ngcontent-fbc-c43=""
-                                                           class="fw-bold mb-5 mt-2 pt-1 text-center">
-                  Thanh toán</h3>
-                  <hr _ngcontent-fbc-c43="" class="my-4">
-                  <div _ngcontent-fbc-c43="" class="d-flex justify-content-between mb-4"><h5
-                    _ngcontent-fbc-c43="">Tổng tiền hàng</h5><h5 _ngcontent-fbc-c43=""
-                                                                 class="text-danger ng-star-inserted">
-                    40,400 VNĐ</h5><!----></div>
-                  <div _ngcontent-fbc-c43="" class="d-flex justify-content-between mb-4"><h5
-                    _ngcontent-fbc-c43="">Tiền phí vận chuyển</h5><h5 _ngcontent-fbc-c43=""
-                                                                      class="text-danger ng-star-inserted">
-                    Miễn phí</h5><!----></div>
-                  <hr _ngcontent-fbc-c43="" class="my-4">
-                  <div _ngcontent-fbc-c43="" class="d-flex justify-content-between mb-5"><h5
-                    _ngcontent-fbc-c43="">Tổng thanh toán</h5><h5 _ngcontent-fbc-c43=""
-                                                                  class="text-danger ng-star-inserted">
-                    40,400 VNĐ</h5><!----></div>
-                  <button _ngcontent-fbc-c43="" type="button" data-mdb-ripple-color="dark"
-                          class="btn btn-primary btn-block btn-lg">Tiến hành thanh toán
+           <!--   <div class="col-lg-4 bg-grey">
+                <div class="p-3">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1 text-center">Thanh toán</h3>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5>Tổng tiền hàng</h5>
+                    <h5 *ngIf="totalPayment> 0" class="text-danger">{{totalPayment | number:'1.0-0'}} VNĐ</h5>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5>Tiền phí vận chuyển</h5>
+                    <h5 *ngIf="totalPayment> 0" class="text-danger">Miễn phí</h5>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-5">
+                    <h5>Tổng thanh toán</h5>
+                    <h5 *ngIf="totalPayment> 0" class="text-danger">{{totalPayment | number:'1.0-0'}} VNĐ</h5>
+                  </div>
+
+                  <button [disabled]="totalPayment<= 0" (click)="payment()" type="button" class="btn btn-primary btn-block btn-lg"
+                          data-mdb-ripple-color="dark">Tiến hành thanh toán
                   </button>
+
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -109,3 +112,4 @@
     </div>
   </div>
 </section>
+

@@ -91,6 +91,23 @@
     </div>
   </div>
 </nav>
+<!--<div>
+  <nav class="navbar">
+    <div class=" container py-5">
+      <div class="navbar-brand wrapper">
+        <button id='outerDiv' style="margin-bottom: 5px; margin-left: 50px" type="button"  *ngFor="let item of productTypeList" (click)="search(item.name)">
+          <a *ngIf="item.id == 1" ><img src="../../../../assets/img/8339c19d-1fe8-43fc-8a0d-474c9de17ca7.png" height="106" width="172"/></a>
+          <a *ngIf="item.id == 2" ><img src="../../../../assets/img/342843e8-9b96-486c-a45b-55884d0fcd92.png" height="106" width="172"/></a>
+          <a *ngIf="item.id == 3" ><img src="../../../../assets/img/bd5d9f39-2571-4ddc-9d57-5bbbafcc34c9.png" height="106" width="150"/></a>
+          <a *ngIf="item.id == 4" ><img src="../../../../assets/img/72c29cbe-5cdb-4853-9d38-e1079a86e35e.png" height="106" width="150"/></a>
+          <div id='mask'></div>
+        </button>
+
+      </div>
+
+    </div>
+  </nav>
+</div>-->
 <div class="container">
   <div class="section-title">
     <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">THỰC ĐƠN & GIÁ</h4>
@@ -98,13 +115,15 @@
   <div class="wrapper" >
     <ul class="products">
       <li *ngFor="let product of productList">
+        <a [routerLink]="['/cart/detail/',product.id]">
+
         <div class="product-item">
           <div class="product-top">
             <a href="" class="product-thumb">
               <img [src]="product.img" style="border: #f5c833 solid">
-              <a class="buy-now" data-toggle="modal" routerLink="cart/detail" data-target="#detail">Mua ngay</a>
-
+              <a class="buy-now" data-toggle="modal" data-target="#detail">Mua ngay</a>
             </a>
+
           </div>
         </div>
         <div class="product-info">
@@ -117,6 +136,7 @@
             { style: "currency", currency: "VND" }
           )}}</div>
         </div>
+        </a>
       </li>
     </ul>
   </div>
@@ -136,12 +156,14 @@
   <div class="wrapper" >
     <ul class="products">
       <li *ngFor="let product of productList">
+
+
         <div class="product-item">
           <div class="product-top">
             <a href="" class="product-thumb" >
+              <a [routerLink]="['/cart/detail/',product.id]">
               <img [src]="product.img" style="border: #f5c833 solid">
-              <a class="buy-now" data-toggle="modal"  routerLink="cart/detail" data-target="#detail">Mua ngay</a>
-
+              </a>
             </a>
           </div>
         </div>
@@ -155,6 +177,7 @@
             { style: "currency", currency: "VND" }
           )}}</div>
         </div>
+        <button class="buy-now" data-toggle="modal" (click)="addCarts(product.id)" data-target="#detail">Mua ngay</button>
       </li>
     </ul>
   </div>
@@ -218,3 +241,6 @@
     </div>
   </div>
 </div>
+
+
+

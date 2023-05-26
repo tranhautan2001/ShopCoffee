@@ -30,4 +30,12 @@ public class ProductRestController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+    @GetMapping("/detail{id}")
+    public ResponseEntity<?> listDetail( @RequestParam(name = "id", defaultValue = "0") Integer id) {
+        Product products = productService.Detail(id);
+        if (products == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }

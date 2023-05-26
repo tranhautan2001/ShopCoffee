@@ -1,5 +1,5 @@
 import {ProductType} from "./product-type";
-import {Supplier} from "./supplier";
+import { Suppliers} from "./supplier";
 
 export interface Product {
   id?: number,
@@ -9,5 +9,5 @@ export interface Product {
   quantity?: number,
   img?: string,
   productType?: ProductType,
-  supplier?: Supplier,
+  suppliers?: Suppliers,
 }

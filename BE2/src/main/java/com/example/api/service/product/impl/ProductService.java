@@ -16,4 +16,9 @@ public class ProductService implements IProductService {
     public List<Product> ListProduct(String name, Integer product_type_id) {
         return productRepository.ListProduct(name,product_type_id);
     }
+
+    @Override
+    public Product Detail(Integer id) {
+        return productRepository.Detail(id);
+    }
 }
